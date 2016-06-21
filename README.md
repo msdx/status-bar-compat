@@ -1,6 +1,8 @@
 StatusBarCompat
 ---
 
+[ ![Download](https://api.bintray.com/packages/msdx/maven/StatusBarCompat/images/download.svg) ](https://bintray.com/msdx/maven/StatusBarCompat/_latestVersion)
+
 # 简介
 StatusBarCompat是一个用于设置系统状态栏颜色的兼容库，兼容Android 4.4.2(API 19)以上，使用简单，仅需要一行代码的调用。
 
@@ -11,7 +13,24 @@ StatusBarCompat是一个用于设置系统状态栏颜色的兼容库，兼容An
 
 #使用方式
 
-只需要在你的Activity的onCreate代码中加入以下一行代码：
+##声明仓库
+确保在你的根项目的build.gradle中对`jcenter`的声明：
+```gradle
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+```
+
+## 声明依赖
+在你要使用的module的`build.gradle`文件中声明以下依赖：
+```gradle
+    compile 'com.githang:status-bar-compat:0.1'
+```
+
+##代码调用
+最后在你的Activity的onCreate代码中调用以下代码就可以了。
 ```java
     StatusBarCompat.setStatusBarColor(this, color, lightStatusBar);
 ```
