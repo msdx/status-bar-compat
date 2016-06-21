@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">StatusBarCompat</string>
+    <string name="change_status_bar_color">Change status bar color</string>
+</resources>
