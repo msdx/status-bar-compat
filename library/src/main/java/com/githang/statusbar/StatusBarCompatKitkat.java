@@ -23,7 +23,6 @@ import android.widget.FrameLayout;
 class StatusBarCompatKitkat {
     @TargetApi(Build.VERSION_CODES.KITKAT)
     static void setStatusBarColor(Window window, int color, boolean lightStatusBar) {
-        //取消设置透明状态栏,使 ContentView 内容不再覆盖状态栏
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 
         ViewGroup decorViewGroup = (ViewGroup) window.getDecorView();

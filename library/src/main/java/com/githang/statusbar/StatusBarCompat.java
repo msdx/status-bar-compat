@@ -32,7 +32,7 @@ public class StatusBarCompat {
             StatusBarCompatM.setStatusBarColor(window, color, lightStatusBar);
 //        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 //            该方法无效，暂时屏蔽，采用以下方式来设置系统状态栏
-//            StatusBarCompatLollipop.setStatusBarColor(activity, color, lightStatusBar);
+//            StatusBarCompatLollipop.setStatusBarColor(window, color, lightStatusBar);
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             StatusBarCompatKitkat.setStatusBarColor(window, color, lightStatusBar);
         }
