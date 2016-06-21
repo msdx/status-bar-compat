@@ -1,8 +1,8 @@
 package com.githang.statusbar;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.os.Build;
-import android.support.v4.view.ViewCompat;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -33,12 +33,15 @@ public class StatusBarCompat {
         }
     }
 
+    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     public static void setFitsSystemWindows(Activity activity, boolean fitSystemWindows) {
-        ViewGroup mContentView = (ViewGroup) activity.findViewById(Window.ID_ANDROID_CONTENT);
-        View mChildView = mContentView.getChildAt(0);
-        if (mChildView != null) {
-            //注意不是设置 ContentView 的 FitsSystemWindows, 而是设置 ContentView 的第一个子 View . 预留出系统 View 的空间.
-            ViewCompat.setFitsSystemWindows(mChildView, fitSystemWindows);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+            ViewGroup mContentView = (ViewGroup) activity.findViewById(Window.ID_ANDROID_CONTENT);
+            View mChildView = mContentView.getChildAt(0);
+            if (mChildView != null) {
+                //注意不是设置 ContentView 的 FitsSystemWindows, 而是设置 ContentView 的第一个子 View . 预留出系统 View 的空间.
+                mChildView.setFitsSystemWindows(fitSystemWindows);
+            }
         }
     }
 }

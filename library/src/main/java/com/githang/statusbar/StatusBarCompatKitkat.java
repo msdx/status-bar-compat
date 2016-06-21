@@ -36,6 +36,7 @@ class StatusBarCompatKitkat {
         statusBarView.setLayoutParams(params);
         statusBarView.setBackgroundColor(color);
         decorViewGroup.addView(statusBarView);
+        StatusBarCompat.setFitsSystemWindows(activity, true);
     }
 
     private static int getStatusBarHeight(Activity activity) {
