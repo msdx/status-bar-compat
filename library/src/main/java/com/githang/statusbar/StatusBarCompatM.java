@@ -23,6 +23,8 @@ class StatusBarCompatM {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         //设置状态栏颜色
         window.setStatusBarColor(color);
+
+        // 设置浅色状态栏时的界面显示
         View decor = window.getDecorView();
         int ui = decor.getSystemUiVisibility();
         if (lightStatusBar) {
@@ -31,6 +33,12 @@ class StatusBarCompatM {
             ui &= ~View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
         }
         decor.setSystemUiVisibility(ui);
+
+        // 去掉系统状态栏下的windowContentOverlay
+        View v = window.findViewById(android.R.id.content);
+        if (v != null) {
+            v.setForeground(null);
+        }
     }
 
 }
