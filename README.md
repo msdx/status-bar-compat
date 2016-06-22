@@ -38,14 +38,13 @@ allprojects {
 # 第三方ROM适配支持
 ROM | 是否支持
 :---:|:---:
-MIUI| √
-Flyme|√
-氢OS| ×
+MIUI（小米）| √
+Flyme（魅族）|√
 
 # 参考资料：
 - [SystemBarTint](https://github.com/jgilfelt/SystemBarTint)
-- [Android Lollipop Set Status Bar Text Color](http://stackoverflow.com/questions/30464234/android-lollipop-set-status-bar-text-color)
+- [《Android Lollipop Set Status Bar Text Color》](http://stackoverflow.com/questions/30464234/android-lollipop-set-status-bar-text-color)
 - [《由沉浸式状态栏引发的血案》](http://www.jianshu.com/p/140be70b84cd?utm_source=tuicool&utm_medium=referral)
-- [《android状态栏一体化(改变状态栏的背景颜色) 》](http://blog.csdn.net/jdsjlzx/article/details/41643587)
-- [Remove action bar shadow programmatically](http://stackoverflow.com/questions/19922078/remove-action-bar-shadow-programmatically)
-- [Android-->沉浸式状态栏字体颜色的修改(只针对小米和魅族) ](http://blog.csdn.net/angcyo/article/details/49834739)
+- [《android状态栏一体化(改变状态栏的背景颜色)》](http://blog.csdn.net/jdsjlzx/article/details/41643587)
+- [《Remove action bar shadow programmatically》](http://stackoverflow.com/questions/19922078/remove-action-bar-shadow-programmatically)
+- [《Android-->沉浸式状态栏字体颜色的修改(只针对小米和魅族)》](http://blog.csdn.net/angcyo/article/details/49834739)
