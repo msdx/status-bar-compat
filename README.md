@@ -26,7 +26,7 @@ allprojects {
 ## 声明依赖
 在你要使用的module的`build.gradle`文件中声明以下依赖：
 ```gradle
-    compile 'com.githang:status-bar-compat:0.1.2'
+    compile 'com.githang:status-bar-compat:0.2'
 ```
 
 ##代码调用

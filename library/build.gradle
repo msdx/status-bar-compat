@@ -17,7 +17,7 @@ android {
     defaultConfig {
         minSdkVersion 9
         targetSdkVersion 23
-        versionCode 3
+        versionCode "git rev-list HEAD --count".execute().text.trim().toInteger()
         versionName PROJ_VERSION
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
