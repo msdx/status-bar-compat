@@ -16,20 +16,32 @@ import java.lang.reflect.Method;
  */
 
 class StatusBarCompatFlavorRom {
-    static void setLightStatusBar(Window window, boolean lightStatusBar) {
-        if (StatusBarCompatMIUI.isMe()) {
-            StatusBarCompatMIUI.setLightStatusBar(window, lightStatusBar);
-        } else if (StatusBarCompatMeizu.isMe()) {
-            StatusBarCompatMeizu.setLightStatusBar(window, lightStatusBar);
+
+    interface StatusBarImpl {
+        void setLightStatusBar(Window window, boolean lightStatusBar);
+    }
+
+    static final StatusBarImpl IMPL;
+    static {
+        if (MIUIStatusBarImpl.isMe()) {
+            IMPL = new MIUIStatusBarImpl();
+        } else if (MeizuStatusBarImpl.isMe()) {
+            IMPL = new MeizuStatusBarImpl();
+        } else {
+            IMPL = new DefaultStatusBarImpl();
         }
     }
 
-    static class StatusBarCompatMIUI {
+    static void setLightStatusBar(Window window, boolean lightStatusBar) {
+        IMPL.setLightStatusBar(window, lightStatusBar);
+    }
+
+    static class MIUIStatusBarImpl implements StatusBarImpl {
         static boolean isMe() {
             return "Xiaomi".equals(Build.MANUFACTURER);
         }
 
-        static void setLightStatusBar(Window window, boolean lightStatusBar) {
+        public void setLightStatusBar(Window window, boolean lightStatusBar) {
             Class<? extends Window> clazz = window.getClass();
             try {
                 Class<?> layoutParams = Class.forName("android.view.MiuiWindowManager$LayoutParams");
@@ -43,7 +55,7 @@ class StatusBarCompatFlavorRom {
         }
     }
 
-    static class StatusBarCompatMeizu {
+    static class MeizuStatusBarImpl implements StatusBarImpl {
         static boolean isMe() {
             final Method method;
             try {
@@ -55,7 +67,7 @@ class StatusBarCompatFlavorRom {
             return false;
         }
 
-        static void setLightStatusBar(Window window, boolean lightStatusBar) {
+        public void setLightStatusBar(Window window, boolean lightStatusBar) {
             WindowManager.LayoutParams params = window.getAttributes();
             try {
                 Field darkFlag = WindowManager.LayoutParams.class.getDeclaredField("MEIZU_FLAG_DARK_STATUS_BAR_ICON");
@@ -76,6 +88,13 @@ class StatusBarCompatFlavorRom {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    static class DefaultStatusBarImpl implements StatusBarImpl {
+        @Override
+        public void setLightStatusBar(Window window, boolean lightStatusBar) {
+            // do nothing
         }
     }
 }

@@ -2,7 +2,6 @@ package com.githang.statusbar.demo;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
 import android.support.v4.content.res.ResourcesCompat;
