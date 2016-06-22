@@ -20,9 +20,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            findViewById(R.id.button).setVisibility(View.GONE);
-        }
         setStatusBarColor(ResourcesCompat.getColor(getResources(), R.color.colorPrimary, null));
     }
 
