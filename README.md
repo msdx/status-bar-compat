@@ -35,8 +35,14 @@ allprojects {
     StatusBarCompat.setStatusBarColor(this, color, lightStatusBar);
 ```
 
+# 第三方ROM适配支持
+ROM | 是否支持
+:---:|:---:
+MIUI| √
+Flyme|√
+氢OS| ×
 
-#参考资料：
+# 参考资料：
 - [SystemBarTint](https://github.com/jgilfelt/SystemBarTint)
 - [Android Lollipop Set Status Bar Text Color](http://stackoverflow.com/questions/30464234/android-lollipop-set-status-bar-text-color)
 - [《由沉浸式状态栏引发的血案》](http://www.jianshu.com/p/140be70b84cd?utm_source=tuicool&utm_medium=referral)
