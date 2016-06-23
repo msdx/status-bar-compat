@@ -17,10 +17,28 @@ import android.view.WindowManager;
  */
 
 public class StatusBarCompat {
+
+    static final IStatusBar IMPL;
+
+    static {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            IMPL = new StatusBarMImpl();
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            IMPL = new StatusBarKitkatImpl();
+        } else {
+            IMPL = new IStatusBar() {
+                @Override
+                public void setStatusBarColor(Window window, int color, boolean lightStatusBar) {
+                }
+            };
+        }
+    }
+
     /**
      * Set system status bar color.
+     *
      * @param activity
-     * @param color status bar color
+     * @param color          status bar color
      * @param lightStatusBar if the status bar color is light. Only effective when API >= 23
      */
     public static void setStatusBarColor(Activity activity, int color, boolean lightStatusBar) {
@@ -28,14 +46,7 @@ public class StatusBarCompat {
         if ((window.getAttributes().flags & WindowManager.LayoutParams.FLAG_FULLSCREEN) > 0) {
             return;
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            StatusBarCompatM.setStatusBarColor(window, color, lightStatusBar);
-//        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            该方法无效，暂时屏蔽，采用以下方式来设置系统状态栏
-//            StatusBarCompatLollipop.setStatusBarColor(window, color, lightStatusBar);
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            StatusBarCompatKitkat.setStatusBarColor(window, color, lightStatusBar);
-        }
+        IMPL.setStatusBarColor(window, color, lightStatusBar);
     }
 
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)

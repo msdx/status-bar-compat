@@ -1,7 +1,6 @@
 package com.githang.statusbar;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.os.Build;
 import android.view.Window;
 import android.view.WindowManager;
@@ -14,7 +13,7 @@ import android.view.WindowManager;
  * @since 2016-06-20
  */
 
-class StatusBarCompatLollipop {
+class StatusBarLollipopImpl {
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     static void setStatusBarColor(Window window, int color, boolean lightStatusBar) {
         //取消设置透明状态栏,使 ContentView 内容不再覆盖状态栏

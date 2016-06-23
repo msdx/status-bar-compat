@@ -20,9 +20,9 @@ import android.widget.FrameLayout;
  * @since 2016-06-20
  */
 
-class StatusBarCompatKitkat {
+class StatusBarKitkatImpl implements IStatusBar {
     @TargetApi(Build.VERSION_CODES.KITKAT)
-    static void setStatusBarColor(Window window, int color, boolean lightStatusBar) {
+    public void setStatusBarColor(Window window, int color, boolean lightStatusBar) {
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 
         ViewGroup decorViewGroup = (ViewGroup) window.getDecorView();

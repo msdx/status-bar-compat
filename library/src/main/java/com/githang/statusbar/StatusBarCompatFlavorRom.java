@@ -17,18 +17,23 @@ import java.lang.reflect.Method;
 
 class StatusBarCompatFlavorRom {
 
-    interface StatusBarImpl {
+    interface ILightStatusBar {
         void setLightStatusBar(Window window, boolean lightStatusBar);
     }
 
-    static final StatusBarImpl IMPL;
+    static final ILightStatusBar IMPL;
+
     static {
-        if (MIUIStatusBarImpl.isMe()) {
-            IMPL = new MIUIStatusBarImpl();
-        } else if (MeizuStatusBarImpl.isMe()) {
-            IMPL = new MeizuStatusBarImpl();
+        if (MIUILightStatusBarImpl.isMe()) {
+            IMPL = new MIUILightStatusBarImpl();
+        } else if (MeizuLightStatusBarImpl.isMe()) {
+            IMPL = new MeizuLightStatusBarImpl();
         } else {
-            IMPL = new DefaultStatusBarImpl();
+            IMPL = new ILightStatusBar() {
+                @Override
+                public void setLightStatusBar(Window window, boolean lightStatusBar) {
+                }
+            };
         }
     }
 
@@ -36,7 +41,7 @@ class StatusBarCompatFlavorRom {
         IMPL.setLightStatusBar(window, lightStatusBar);
     }
 
-    static class MIUIStatusBarImpl implements StatusBarImpl {
+    static class MIUILightStatusBarImpl implements ILightStatusBar {
         static boolean isMe() {
             return "Xiaomi".equals(Build.MANUFACTURER);
         }
@@ -55,7 +60,7 @@ class StatusBarCompatFlavorRom {
         }
     }
 
-    static class MeizuStatusBarImpl implements StatusBarImpl {
+    static class MeizuLightStatusBarImpl implements ILightStatusBar {
         static boolean isMe() {
             final Method method;
             try {
@@ -88,13 +93,6 @@ class StatusBarCompatFlavorRom {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
-    }
-
-    static class DefaultStatusBarImpl implements StatusBarImpl {
-        @Override
-        public void setLightStatusBar(Window window, boolean lightStatusBar) {
-            // do nothing
         }
     }
 }
