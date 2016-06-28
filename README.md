@@ -35,11 +35,32 @@ allprojects {
     StatusBarCompat.setStatusBarColor(this, color, lightStatusBar);
 ```
 
-# 第三方ROM适配支持
+#适配支持情况
+
+## 第三方ROM适配支持
 ROM | 是否支持
 :---:|:---:
 MIUI（小米）| √
 Flyme（魅族）|√
+
+##设置失败的机型
+型号 |系统版本|备注
+:---:|:---:|:---:
+高通 Andriod L Device1 |4.4.4(SDK 19)|状态栏还是为黑色
+
+## 已知的设置状态栏为白色后看不清时间的机型
+把状态栏设置为白色或接近白色的颜色可能导致部分机型看不清状态栏的图标与文字，原因是这些机型把设置状态栏半透明改成了全透明，而Android 6.0以下没有官方的API可以把状态栏的图标及字体设置为深色，需要定制的ROM自己提供API支持。
+
+目前已知的提供了支持的ROM有MIUI以及Flyme。以下是已知的不支持的机型列表：
+
+型号 | 系统版本 | 备注
+:---:|:---:|:---:
+华硕 K010|4.4.2(SDK 19)|白色字体但有阴影
+Lenovo TAB S8-50F|4.4.2(SDK 19)|完全看不到时间
+联想 A936|4.4.4(SDK 19)|同上
+联想 K80M|4.4.4(SDK 19)|同上
+
+以上具体机型测试结果根据在Testin上随机兼容性测试所得，测试报告地址：http://realauto.testin.cn/s/1amaujufn
 
 # 参考资料：
 - [SystemBarTint](https://github.com/jgilfelt/SystemBarTint)
