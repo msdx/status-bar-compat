@@ -2,6 +2,7 @@ package com.githang.statusbar;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Build;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +33,15 @@ public class StatusBarCompat {
                 }
             };
         }
+    }
+
+    public static void setStatusBarColor(Activity activity, int color) {
+        boolean isLightColor = nearWhite(Color.red(color)) && nearWhite(Color.green(color)) && nearWhite(Color.blue(color));
+        setStatusBarColor(activity, color, isLightColor);
+    }
+
+    private static boolean nearWhite(int singleColor) {
+        return singleColor > 200;
     }
 
     /**
