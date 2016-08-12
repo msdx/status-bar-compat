@@ -1,36 +1,32 @@
 package com.githang.statusbar.demo;
 
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.annotation.ColorInt;
-import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 
 import com.githang.statusbar.StatusBarCompat;
 import com.githang.statusbarcompat.demo.R;
+import com.larswerkman.holocolorpicker.ColorPicker;
+import com.larswerkman.holocolorpicker.SVBar;
 
-public class MainActivity extends AppCompatActivity {
-
-    private boolean mLightStatusBar;
+public class MainActivity extends AppCompatActivity implements ColorPicker.OnColorChangedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setStatusBarColor(ResourcesCompat.getColor(getResources(), R.color.colorPrimary, null));
+
+        ColorPicker picker = (ColorPicker) findViewById(R.id.picker);
+        SVBar svBar = (SVBar) findViewById(R.id.svbar);
+
+        picker.addSVBar(svBar);
+        picker.setOldCenterColor(picker.getColor());
+        picker.setOnColorChangedListener(this);
+
     }
 
-    private void setStatusBarColor(@ColorInt int color) {
-        StatusBarCompat.setStatusBarColor(this, color, mLightStatusBar);
-    }
+    @Override
+    public void onColorChanged(int color) {
+        StatusBarCompat.setStatusBarColor(this, color);
 
-    public void onClick(View view) {
-        mLightStatusBar = !mLightStatusBar;
-        int color = mLightStatusBar ? Color.WHITE : ResourcesCompat.getColor(getResources(), R.color.colorPrimary, null);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(color));
-        setStatusBarColor(color);
     }
-
 }
