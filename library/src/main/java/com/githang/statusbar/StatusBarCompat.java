@@ -49,10 +49,19 @@ public class StatusBarCompat {
      *
      * @param activity
      * @param color          status bar color
-     * @param lightStatusBar if the status bar color is light. Only effective when API >= 23
+     * @param lightStatusBar if the status bar color is light. Only effective in some devices.
      */
     public static void setStatusBarColor(Activity activity, int color, boolean lightStatusBar) {
-        Window window = activity.getWindow();
+        setStatusBarColor(activity.getWindow(), color, lightStatusBar);
+    }
+
+    /**
+     * Set the system status bar color
+     * @param window the window
+     * @param color status bar color
+     * @param lightStatusBar if the status bar color is light. Only effective in some devices.
+     */
+    public static void setStatusBarColor(Window window, int color, boolean lightStatusBar) {
         if ((window.getAttributes().flags & WindowManager.LayoutParams.FLAG_FULLSCREEN) > 0) {
             return;
         }
