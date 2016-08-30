@@ -26,13 +26,17 @@ allprojects {
 ## 声明依赖
 在你要使用的module的`build.gradle`文件中声明以下依赖：
 ```gradle
-    compile 'com.githang:status-bar-compat:0.3'
+    compile 'com.githang:status-bar-compat:0.4.1'
 ```
 
 ##代码调用
 最后在你的Activity的onCreate代码中调用以下代码就可以了。
 ```java
     StatusBarCompat.setStatusBarColor(this, color, lightStatusBar);
+```
+或者是
+```java
+    StatusBarCompat.setStatusBarColor(this, color);
 ```
 
 #适配支持情况
