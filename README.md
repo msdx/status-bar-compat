@@ -2,6 +2,7 @@ StatusBarCompat
 ---
 
 [ ![Download](https://api.bintray.com/packages/msdx/maven/StatusBarCompat/images/download.svg) ](https://bintray.com/msdx/maven/StatusBarCompat/_latestVersion)
+[ ![Methods](https://img.shields.io/badge/Methods and size-71 | 10 KB-e91e63.svg) ](http://www.methodscount.com/?lib=com.githang%3Astatus-bar-compat%3A0.4.1)
 
 # 简介
 StatusBarCompat是一个用于设置系统状态栏颜色的兼容库，兼容Android 4.4.2(API 19)以上，使用简单，仅需要一行代码的调用。
