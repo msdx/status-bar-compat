@@ -62,14 +62,7 @@ class StatusBarCompatFlavorRom {
 
     static class MeizuLightStatusBarImpl implements ILightStatusBar {
         static boolean isMe() {
-            final Method method;
-            try {
-                method = Build.class.getMethod("hasSmartBar");
-                return method != null;
-            } catch (NoSuchMethodException e) {
-                e.printStackTrace();
-            }
-            return false;
+            return Build.BRAND.contains("Meizu");
         }
 
         public void setLightStatusBar(Window window, boolean lightStatusBar) {
