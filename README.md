@@ -1,6 +1,6 @@
 StatusBarCompat
 ---
-
+[![Build Status](https://travis-ci.org/msdx/status-bar-compat.svg?branch=master)](https://travis-ci.org/msdx/status-bar-compat)
 [ ![Download](https://api.bintray.com/packages/msdx/maven/StatusBarCompat/images/download.svg) ](https://bintray.com/msdx/maven/StatusBarCompat/_latestVersion)
 [ ![Methods](https://img.shields.io/badge/Methods and size-71 | 10 KB-e91e63.svg) ](http://www.methodscount.com/?lib=com.githang%3Astatus-bar-compat%3A0.4.3)
 
