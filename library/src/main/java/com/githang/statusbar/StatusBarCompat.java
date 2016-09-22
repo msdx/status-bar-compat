@@ -36,12 +36,19 @@ public class StatusBarCompat {
     }
 
     public static void setStatusBarColor(Activity activity, int color) {
-        boolean isLightColor = nearWhite(Color.red(color)) && nearWhite(Color.green(color)) && nearWhite(Color.blue(color));
+        boolean isLightColor = toGrey(color) > 95;
         setStatusBarColor(activity, color, isLightColor);
     }
 
-    private static boolean nearWhite(int singleColor) {
-        return singleColor > 200;
+    /**
+     * 把颜色转换成灰度值。
+     * 代码来自 Flyme 示例代码
+     */
+    public static int toGrey(int color) {
+        int blue = Color.blue(color);
+        int green = Color.green(color);
+        int red = Color.red(color);
+        return (red * 38 + green * 75 + blue * 15) >> 7;
     }
 
     /**
