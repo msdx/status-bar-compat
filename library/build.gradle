@@ -39,4 +39,6 @@ dependencies {
     androidTestCompile 'com.android.support:support-annotations:23.4.0'
 }
 
-apply from: 'bintray.gradle'
+if (hasProperty("bintrayUser" ) || hasProperty("BINTRAY_USER")) {
+    apply from: 'bintray.gradle'
+}
