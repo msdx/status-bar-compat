@@ -36,7 +36,7 @@ public class StatusBarCompat {
     }
 
     public static void setStatusBarColor(Activity activity, int color) {
-        boolean isLightColor = toGrey(color) > 95;
+        boolean isLightColor = toGrey(color) > 225;
         setStatusBarColor(activity, color, isLightColor);
     }
 
