@@ -69,7 +69,8 @@ public class StatusBarCompat {
      * @param lightStatusBar if the status bar color is light. Only effective in some devices.
      */
     public static void setStatusBarColor(Window window, int color, boolean lightStatusBar) {
-        if ((window.getAttributes().flags & WindowManager.LayoutParams.FLAG_FULLSCREEN) > 0) {
+        if ((window.getAttributes().flags & WindowManager.LayoutParams.FLAG_FULLSCREEN) > 0
+                || StatusBarExclude.exclude) {
             return;
         }
         IMPL.setStatusBarColor(window, color, lightStatusBar);

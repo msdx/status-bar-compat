@@ -27,6 +27,5 @@ public class MainActivity extends AppCompatActivity implements ColorPicker.OnCol
     @Override
     public void onColorChanged(int color) {
         StatusBarCompat.setStatusBarColor(this, color);
-
     }
 }
