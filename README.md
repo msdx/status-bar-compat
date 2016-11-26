@@ -2,7 +2,7 @@ StatusBarCompat
 ---
 [![Build Status](https://travis-ci.org/msdx/status-bar-compat.svg?branch=master)](https://travis-ci.org/msdx/status-bar-compat)
 [ ![Download](https://api.bintray.com/packages/msdx/maven/StatusBarCompat/images/download.svg) ](https://bintray.com/msdx/maven/StatusBarCompat/_latestVersion)
-[ ![Methods](https://img.shields.io/badge/Methods and size-74 | 10 KB-e91e63.svg) ](http://www.methodscount.com/?lib=com.githang%3Astatus-bar-compat%3A0.4.4)
+[ ![Methods](https://img.shields.io/badge/Methods and size-84 | 12 KB-e91e63.svg) ](http://www.methodscount.com/?lib=com.githang%3Astatus-bar-compat%3A0.5)
 
 # 简介
 StatusBarCompat是一个用于设置系统状态栏颜色的兼容库，兼容Android 4.4.2(API 19)以上，使用简单，仅需要一行代码的调用。
@@ -27,7 +27,7 @@ allprojects {
 ## 声明依赖
 在你要使用的module的`build.gradle`文件中声明以下依赖：
 ```gradle
-    compile 'com.githang:status-bar-compat:0.4.4'
+    compile 'com.githang:status-bar-compat:0.5'
 ```
 
 ##代码调用
@@ -43,10 +43,11 @@ allprojects {
 #适配支持情况
 
 ## 第三方ROM适配支持
-ROM | 是否支持
-:---:|:---:
-MIUI（小米）| √
-Flyme（魅族）|√
+ROM | 适配说明
+:---|:---
+MIUI| 调用小米的API适配
+Flyme|调用魅族API适配，并且增加不主动设置可能不兼容的Flyme的状态栏的API
+EMUI3.1|对于6.0以下5.0及其以上的EMUI，使用4.4.2的方式来处理（EMUI3.1无法使用5.0API设置）
 
 ##设置失败的机型
 型号 |系统版本|备注
