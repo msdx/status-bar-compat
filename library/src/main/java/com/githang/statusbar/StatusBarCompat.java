@@ -4,10 +4,16 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Build;
+import android.os.Environment;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
 
 /**
  * 设置系统状态栏颜色
@@ -24,6 +30,8 @@ public class StatusBarCompat {
     static {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             IMPL = new StatusBarMImpl();
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && !isEMUI()) {
+            IMPL = new StatusBarLollipopImpl();
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             IMPL = new StatusBarKitkatImpl();
         } else {
@@ -33,6 +41,30 @@ public class StatusBarCompat {
                 }
             };
         }
+    }
+
+    private static boolean isEMUI() {
+        File file = new File(Environment.getRootDirectory(), "build.prop");
+        if (file.exists()) {
+            Properties properties = new Properties();
+            FileInputStream fis = null;
+            try {
+                fis = new FileInputStream(file);
+                properties.load(fis);
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                if (fis != null) {
+                    try {
+                        fis.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            return properties.containsKey("ro.build.hw_emui_api_level");
+        }
+        return false;
     }
 
     public static void setStatusBarColor(Activity activity, int color) {
