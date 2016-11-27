@@ -78,3 +78,4 @@ Lenovo TAB S8-50F|4.4.2(SDK 19)|完全看不到时间
 - [《android状态栏一体化(改变状态栏的背景颜色)》](http://blog.csdn.net/jdsjlzx/article/details/41643587)
 - [《Remove action bar shadow programmatically》](http://stackoverflow.com/questions/19922078/remove-action-bar-shadow-programmatically)
 - [《Android-->沉浸式状态栏字体颜色的修改(只针对小米和魅族)》](http://blog.csdn.net/angcyo/article/details/49834739)
+- [《[Android]判断是否是华为EMUI系统》](http://blog.csdn.net/windowsxp2014/article/details/51669858)
