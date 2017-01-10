@@ -1,11 +1,16 @@
 package com.githang.statusbar;
 
 import android.os.Build;
+import android.os.Environment;
 import android.view.Window;
 import android.view.WindowManager;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.Properties;
 
 /**
  * 适配小米
@@ -42,8 +47,31 @@ class StatusBarCompatFlavorRom {
     }
 
     static class MIUILightStatusBarImpl implements ILightStatusBar {
+
+        private static final String KEY_MIUI_VERSION_CODE = "ro.miui.ui.version.code";
+        private static final String KEY_MIUI_VERSION_NAME = "ro.miui.ui.version.name";
+        private static final String KEY_MIUI_INTERNAL_STORAGE = "ro.miui.internal.storage";
+
         static boolean isMe() {
-            return "Xiaomi".equals(Build.MANUFACTURER);
+            FileInputStream is = null;
+            try {
+                is = new FileInputStream(new File(Environment.getRootDirectory(), "build.prop"));
+                Properties prop = new Properties();
+                prop.load(is);
+                return prop.getProperty(KEY_MIUI_VERSION_CODE) != null
+                        || prop.getProperty(KEY_MIUI_VERSION_NAME) != null
+                        || prop.getProperty(KEY_MIUI_INTERNAL_STORAGE) != null;
+            } catch (final IOException e) {
+                return false;
+            } finally {
+                if (is != null) {
+                    try {
+                        is.close();
+                    } catch (IOException e) {
+                        // ignore all exception
+                    }
+                }
+            }
         }
 
         public void setLightStatusBar(Window window, boolean lightStatusBar) {
