@@ -90,7 +90,7 @@ class StatusBarCompatFlavorRom {
 
     static class MeizuLightStatusBarImpl implements ILightStatusBar {
         static boolean isMe() {
-            return Build.BRAND.contains("Meizu");
+            return Build.DISPLAY.startsWith("Flyme");
         }
 
         public void setLightStatusBar(Window window, boolean lightStatusBar) {
