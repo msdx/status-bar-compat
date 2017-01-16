@@ -18,9 +18,9 @@ import java.util.Properties;
 /**
  * 设置系统状态栏颜色
  *
- * @author 黄浩杭 (huanghaohang@parkingwang.com)
- * @version 2016-06-20
- * @since 2016-06-20
+ * @author msdx (msdx.android@qq.com)
+ * @version 0.5
+ * @since 0.1
  */
 
 public class StatusBarCompat {

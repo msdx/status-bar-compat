@@ -30,7 +30,7 @@ allprojects {
     compile 'com.githang:status-bar-compat:0.5'
 ```
 
-##代码调用
+## 代码调用
 最后在你的Activity的onCreate代码中调用以下代码就可以了。
 ```java
     StatusBarCompat.setStatusBarColor(this, color, lightStatusBar);
@@ -39,6 +39,9 @@ allprojects {
 ```java
     StatusBarCompat.setStatusBarColor(this, color);
 ```
+
+## API文档
+API文档参见：https://msdx.github.io/status-bar-compat/
 
 #适配支持情况
 

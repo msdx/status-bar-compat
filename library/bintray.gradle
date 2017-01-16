@@ -27,7 +27,7 @@ javadoc {
         charSet 'UTF-8'
         author true
         version true
-        links "http://docs.oracle.com/javase/7/docs/api"
+        links "http://androiddoc.qiniudn.com/reference/"
         title PROJ_ARTIFACTID
     }
 }

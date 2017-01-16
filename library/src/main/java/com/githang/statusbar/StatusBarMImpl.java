@@ -9,9 +9,9 @@ import android.view.WindowManager;
 /**
  * 兼容M版本
  *
- * @author 黄浩杭 (huanghaohang@parkingwang.com)
- * @version 2016-06-20
- * @since 2016-06-20
+ * @author msdx (msdx.android@qq.com)
+ * @version 0.3
+ * @since 0.3
  */
 
 class StatusBarMImpl implements IStatusBar {

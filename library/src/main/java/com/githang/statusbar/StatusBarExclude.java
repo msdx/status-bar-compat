@@ -3,9 +3,9 @@ package com.githang.statusbar;
 import android.os.Build;
 
 /**
- * @author 黄浩杭 (huanghaohang@parkingwang.com)
- * @version 2016-10-25
- * @since 2016-10-25
+ * @author msdx (msdx.android@qq.com)
+ * @version 0.5
+ * @since 0.5
  */
 public class StatusBarExclude {
     static boolean exclude = false;

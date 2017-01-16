@@ -15,9 +15,9 @@ import java.util.Properties;
 /**
  * 适配小米
  *
- * @author 黄浩杭 (huanghaohang@parkingwang.com)
- * @version 2016-06-22
- * @since 2016-06-22
+ * @author msdx (msdx.android@qq.com)
+ * @version 0.5
+ * @since 0.2
  */
 
 class StatusBarCompatFlavorRom {

@@ -4,7 +4,6 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Build;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +15,9 @@ import android.widget.FrameLayout;
 /**
  * 兼容KITKAT版本
  *
- * @author 黄浩杭 (huanghaohang@parkingwang.com)
- * @version 2016-06-20
- * @since 2016-06-20
+ * @author msdx (msdx.android@qq.com)
+ * @version 0.4.1
+ * @since 0.3
  */
 
 class StatusBarKitkatImpl implements IStatusBar {
