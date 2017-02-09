@@ -24,7 +24,7 @@ class StatusBarKitkatImpl implements IStatusBar {
     private static final String STATUS_BAR_VIEW_TAG = "ghStatusBarView";
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
-    public void setStatusBarColor(Window window, int color, boolean lightStatusBar) {
+    public void setStatusBarColor(Window window, int color) {
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 
         ViewGroup decorViewGroup = (ViewGroup) window.getDecorView();
@@ -40,7 +40,6 @@ class StatusBarKitkatImpl implements IStatusBar {
         }
         statusBarView.setBackgroundColor(color);
         StatusBarCompat.setFitsSystemWindows(window, true);
-        StatusBarCompatFlavorRom.setLightStatusBar(window, lightStatusBar);
     }
 
     private static int getStatusBarHeight(Context context) {

@@ -37,7 +37,7 @@ public class StatusBarCompat {
         } else {
             IMPL = new IStatusBar() {
                 @Override
-                public void setStatusBarColor(Window window, int color, boolean lightStatusBar) {
+                public void setStatusBarColor(Window window, int color) {
                 }
             };
         }
@@ -105,7 +105,8 @@ public class StatusBarCompat {
                 || StatusBarExclude.exclude) {
             return;
         }
-        IMPL.setStatusBarColor(window, color, lightStatusBar);
+        IMPL.setStatusBarColor(window, color);
+        LightStatusBarCompat.setLightStatusBar(window, lightStatusBar);
     }
 
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
@@ -118,5 +119,9 @@ public class StatusBarCompat {
                 mChildView.setFitsSystemWindows(fitSystemWindows);
             }
         }
+    }
+
+    public static void setLightStatusBar(Window window, boolean isLightStatusBar) {
+        LightStatusBarCompat.setLightStatusBar(window, isLightStatusBar);
     }
 }
