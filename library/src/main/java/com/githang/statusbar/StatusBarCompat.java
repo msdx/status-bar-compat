@@ -19,7 +19,7 @@ import java.util.Properties;
  * 设置系统状态栏颜色
  *
  * @author msdx (msdx.android@qq.com)
- * @version 0.5
+ * @version 0.5.1
  * @since 0.1
  */
 
@@ -121,6 +121,11 @@ public class StatusBarCompat {
         }
     }
 
+    /**
+     * @param window the window will be set
+     * @param isLightStatusBar if the status bar color is light
+     * @since 0.5.1
+     */
     public static void setLightStatusBar(Window window, boolean isLightStatusBar) {
         LightStatusBarCompat.setLightStatusBar(window, isLightStatusBar);
     }
