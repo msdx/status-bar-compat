@@ -31,10 +31,10 @@ class LightStatusBarCompat {
     private static final ILightStatusBar IMPL;
 
     static {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            IMPL = new MLightStatusBarImpl();
-        } else if (MIUILightStatusBarImpl.isMe()) {
+        if (MIUILightStatusBarImpl.isMe()) {
             IMPL = new MIUILightStatusBarImpl();
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            IMPL = new MLightStatusBarImpl();
         } else if (MeizuLightStatusBarImpl.isMe()) {
             IMPL = new MeizuLightStatusBarImpl();
         } else {
