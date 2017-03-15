@@ -31,7 +31,7 @@ allprojects {
 ```
 
 ## 代码调用
-最后在你的Activity的onCreate代码中调用以下代码就可以了。
+最后在你的Activity的`setContentView()`方法调用之后，调用以下方法即可。
 ```java
     StatusBarCompat.setStatusBarColor(this, color, lightStatusBar);
 ```
