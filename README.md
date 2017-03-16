@@ -2,7 +2,7 @@ StatusBarCompat
 ---
 [![Build Status](https://travis-ci.org/msdx/status-bar-compat.svg?branch=master)](https://travis-ci.org/msdx/status-bar-compat)
 [ ![Download](https://api.bintray.com/packages/msdx/maven/StatusBarCompat/images/download.svg) ](https://bintray.com/msdx/maven/StatusBarCompat/_latestVersion)
-[ ![Methods](https://img.shields.io/badge/Methods and size-91 | 13 KB-e91e63.svg) ](http://www.methodscount.com/?lib=com.githang%3Astatus-bar-compat%3A0.5.2)
+[![Methods](https://img.shields.io/badge/Methods%20and%20size-91%20|%2013%20KB-e91e63.svg)](http://www.methodscount.com/?lib=com.githang%3Astatus-bar-compat%3A0.5.2)
 
 # 简介
 StatusBarCompat是一个用于设置系统状态栏颜色的兼容库，兼容Android 4.4.2(API 19)以上，使用简单，仅需要一行代码的调用。
@@ -12,9 +12,9 @@ StatusBarCompat是一个用于设置系统状态栏颜色的兼容库，兼容An
 ![6.0深色状态栏白色文字](images/Android6.0_5C_dark.jpg)
 ![6.0浅色状态栏黑色文字](images/Android6.0_5C_light.jpg)
 
-#使用方式
+# 使用方式
 
-##声明仓库
+## 声明仓库
 确保在你的根项目的build.gradle中对`jcenter`的声明：
 ```gradle
 allprojects {
