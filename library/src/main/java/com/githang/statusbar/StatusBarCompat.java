@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Environment;
+import android.support.annotation.ColorInt;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -37,7 +38,7 @@ public class StatusBarCompat {
         } else {
             IMPL = new IStatusBar() {
                 @Override
-                public void setStatusBarColor(Window window, int color) {
+                public void setStatusBarColor(Window window, @ColorInt int color) {
                 }
             };
         }
@@ -67,7 +68,7 @@ public class StatusBarCompat {
         return false;
     }
 
-    public static void setStatusBarColor(Activity activity, int color) {
+    public static void setStatusBarColor(Activity activity, @ColorInt int color) {
         boolean isLightColor = toGrey(color) > 225;
         setStatusBarColor(activity, color, isLightColor);
     }
@@ -76,7 +77,7 @@ public class StatusBarCompat {
      * 把颜色转换成灰度值。
      * 代码来自 Flyme 示例代码
      */
-    public static int toGrey(int color) {
+    public static int toGrey(@ColorInt int color) {
         int blue = Color.blue(color);
         int green = Color.green(color);
         int red = Color.red(color);
@@ -90,17 +91,18 @@ public class StatusBarCompat {
      * @param color          status bar color
      * @param lightStatusBar if the status bar color is light. Only effective in some devices.
      */
-    public static void setStatusBarColor(Activity activity, int color, boolean lightStatusBar) {
+    public static void setStatusBarColor(Activity activity, @ColorInt int color, boolean lightStatusBar) {
         setStatusBarColor(activity.getWindow(), color, lightStatusBar);
     }
 
     /**
      * Set the system status bar color
-     * @param window the window
-     * @param color status bar color
+     *
+     * @param window         the window
+     * @param color          status bar color
      * @param lightStatusBar if the status bar color is light. Only effective in some devices.
      */
-    public static void setStatusBarColor(Window window, int color, boolean lightStatusBar) {
+    public static void setStatusBarColor(Window window, @ColorInt int color, boolean lightStatusBar) {
         if ((window.getAttributes().flags & WindowManager.LayoutParams.FLAG_FULLSCREEN) > 0
                 || StatusBarExclude.exclude) {
             return;
@@ -122,7 +124,7 @@ public class StatusBarCompat {
     }
 
     /**
-     * @param window the window will be set
+     * @param window           the window will be set
      * @param isLightStatusBar if the status bar color is light
      * @since 0.5.1
      */
