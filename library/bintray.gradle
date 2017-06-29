@@ -28,7 +28,7 @@ javadoc {
         author true
         version true
         links "http://androiddoc.qiniudn.com/reference/"
-        title PROJ_ARTIFACTID
+        title "$PROJ_NAME $PROJ_VERSION"
     }
 }
 

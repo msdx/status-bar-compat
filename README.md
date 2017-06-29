@@ -43,7 +43,7 @@ allprojects {
 ## API文档
 API文档参见：https://msdx.github.io/status-bar-compat/
 
-#适配支持情况
+# 适配支持情况
 
 ## 第三方ROM适配支持
 ROM | 适配说明
@@ -52,7 +52,7 @@ MIUI| 调用小米的API适配
 Flyme|调用魅族API适配，并且增加不主动设置可能不兼容的Flyme的状态栏的API
 EMUI3.1|对于6.0以下5.0及其以上的EMUI，使用4.4.2的方式来处理（EMUI3.1无法使用5.0API设置）
 
-##设置失败的机型
+## 设置失败的机型
 型号 |系统版本|备注
 :---:|:---:|:---:
 高通 Andriod L Device1 |4.4.4(SDK 19)|状态栏还是为黑色
