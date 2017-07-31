@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity implements ColorPicker.OnCol
         picker.addSVBar(svBar);
         picker.setOldCenterColor(picker.getColor());
         picker.setOnColorChangedListener(this);
-
     }
 
     @Override

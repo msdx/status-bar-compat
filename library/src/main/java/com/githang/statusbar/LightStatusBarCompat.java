@@ -32,7 +32,19 @@ class LightStatusBarCompat {
 
     static {
         if (MIUILightStatusBarImpl.isMe()) {
-            IMPL = new MIUILightStatusBarImpl();
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                IMPL = new MLightStatusBarImpl() {
+                    private ILightStatusBar DELEGATE = new MIUILightStatusBarImpl();
+
+                    @Override
+                    public void setLightStatusBar(Window window, boolean lightStatusBar) {
+                        super.setLightStatusBar(window, lightStatusBar);
+                        DELEGATE.setLightStatusBar(window, lightStatusBar);
+                    }
+                };
+            } else {
+                IMPL = new MIUILightStatusBarImpl();
+            }
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             IMPL = new MLightStatusBarImpl();
         } else if (MeizuLightStatusBarImpl.isMe()) {
