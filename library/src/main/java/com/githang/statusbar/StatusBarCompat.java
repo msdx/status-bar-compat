@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Environment;
 import android.support.annotation.ColorInt;
+import android.support.annotation.IdRes;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -111,14 +112,47 @@ public class StatusBarCompat {
         LightStatusBarCompat.setLightStatusBar(window, lightStatusBar);
     }
 
-    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     public static void setFitsSystemWindows(Window window, boolean fitSystemWindows) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-            ViewGroup mContentView = (ViewGroup) window.findViewById(Window.ID_ANDROID_CONTENT);
-            View mChildView = mContentView.getChildAt(0);
-            if (mChildView != null) {
-                //注意不是设置 ContentView 的 FitsSystemWindows, 而是设置 ContentView 的第一个子 View . 预留出系统 View 的空间.
-                mChildView.setFitsSystemWindows(fitSystemWindows);
+            internalSetFitsSystemWindows(window, fitSystemWindows);
+        }
+    }
+
+    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+    static void internalSetFitsSystemWindows(Window window, boolean fitSystemWindows) {
+        final ViewGroup contentView = (ViewGroup) window.findViewById(Window.ID_ANDROID_CONTENT);
+        final View childView = contentView.getChildAt(0);
+        if (childView != null) {
+            //注意不是设置 ContentView 的 FitsSystemWindows, 而是设置 ContentView 的第一个子 View . 预留出系统 View 的空间.
+            childView.setFitsSystemWindows(fitSystemWindows);
+        }
+    }
+
+    public static void resetActionBarContainerTopMargin(Window window) {
+        View contentView = window.findViewById(android.R.id.content);
+        ViewGroup group = (ViewGroup) contentView.getParent();
+        if (group.getChildCount() > 1) {
+            View view = group.getChildAt(1);
+            internalResetActionBarContainer(view);
+        }
+    }
+
+    /**
+     *
+     * @param window The window of the current activity.
+     * @param actionBarContainerId android.support.v7.appcompat.R.id.action_bar_container
+     */
+    public static void resetActionBarContainerTopMargin(Window window, @IdRes int actionBarContainerId) {
+        View view = window.findViewById(actionBarContainerId);
+        internalResetActionBarContainer(view);
+    }
+
+    private static void internalResetActionBarContainer(View actionBarContainer) {
+        if (actionBarContainer != null) {
+            ViewGroup.LayoutParams params = actionBarContainer.getLayoutParams();
+            if (params instanceof ViewGroup.MarginLayoutParams) {
+                ((ViewGroup.MarginLayoutParams) params).topMargin = 0;
+                actionBarContainer.setLayoutParams(params);
             }
         }
     }
