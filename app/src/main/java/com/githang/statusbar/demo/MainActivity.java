@@ -2,6 +2,8 @@ package com.githang.statusbar.demo;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.CompoundButton;
+import android.widget.ToggleButton;
 
 import com.githang.statusbar.StatusBarCompat;
 import com.githang.statusbarcompat.demo.R;
@@ -21,6 +23,16 @@ public class MainActivity extends AppCompatActivity implements ColorPicker.OnCol
         picker.addSVBar(svBar);
         picker.setOldCenterColor(picker.getColor());
         picker.setOnColorChangedListener(this);
+
+        ToggleButton toggleButton = (ToggleButton) findViewById(R.id.toggle);
+        toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                StatusBarCompat.setTranslucent(getWindow(), isChecked);
+                StatusBarCompat.resetActionBarContainerTopMargin(getWindow());
+            }
+        });
+
     }
 
     @Override

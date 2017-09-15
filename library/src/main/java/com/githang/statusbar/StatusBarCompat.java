@@ -165,4 +165,15 @@ public class StatusBarCompat {
     public static void setLightStatusBar(Window window, boolean isLightStatusBar) {
         LightStatusBarCompat.setLightStatusBar(window, isLightStatusBar);
     }
+
+    public static void setTranslucent(Window window, boolean translucent) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            if (translucent) {
+                window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+                internalSetFitsSystemWindows(window, false);
+            } else {
+                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            }
+        }
+    }
 }
