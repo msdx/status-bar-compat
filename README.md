@@ -1,8 +1,8 @@
 StatusBarCompat
 ---
 [![Build Status](https://travis-ci.org/msdx/status-bar-compat.svg?branch=master)](https://travis-ci.org/msdx/status-bar-compat)
-[ ![Download](https://api.bintray.com/packages/msdx/maven/StatusBarCompat/images/download.svg) ](https://bintray.com/msdx/maven/StatusBarCompat/_latestVersion)
-[![Methods](https://img.shields.io/badge/Methods%20and%20size-93%20|%2013%20KB-e91e63.svg)](http://www.methodscount.com/?lib=com.githang%3Astatus-bar-compat%3A0.5.3)
+[![Download](https://api.bintray.com/packages/msdx/maven/StatusBarCompat/images/download.svg) ](https://bintray.com/msdx/maven/StatusBarCompat/_latestVersion)
+[![Methods](https://img.shields.io/badge/Methods%20and%20size-101%20|%2014%20KB-e91e63.svg)](http://www.methodscount.com/?lib=com.githang%3Astatus-bar-compat%3A0.6)
 
 # 简介
 StatusBarCompat是一个用于设置系统状态栏颜色的兼容库，兼容Android 4.4.2(API 19)以上，使用简单，仅需要一行代码的调用。
@@ -27,7 +27,7 @@ allprojects {
 ## 声明依赖
 在你要使用的module的`build.gradle`文件中声明以下依赖：
 ```gradle
-    compile 'com.githang:status-bar-compat:0.5.3'
+    compile 'com.githang:status-bar-compat:0.6'
 ```
 
 ## 代码调用
@@ -79,7 +79,12 @@ Lenovo TAB S8-50F|4.4.2(SDK 19)|完全看不到时间
 以上具体机型测试结果根据在Testin上随机兼容性测试所得，测试报告地址：http://realauto.testin.cn/s/1amaujufn
 
 # 已知问题
+
 - 由于低于6.0以下的系统使用透明状态栏并设置`fitsSystemWindows`来实现设置状态栏颜色，在一些底部虚拟导航栏给隐藏的机型上，可能会出现界面无法显示在该区域中。如果遇到此问题，你需要把你的App theme指定为AppCompat里的一种。
+- 可能会出现状态栏与标题栏之间有一个与状态栏同样大小的间距,如果出现请调用以下代码：
+```java
+StatusBarCompat.resetActionBarContainerTopMargin(getWindow(), android.support.v7.appcompat.R.id.action_bar_container);
+```
 
 # 参考资料：
 - [SystemBarTint](https://github.com/jgilfelt/SystemBarTint)
