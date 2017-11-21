@@ -16,6 +16,7 @@ import android.view.WindowManager;
 
 class StatusBarMImpl implements IStatusBar {
     @TargetApi(Build.VERSION_CODES.M)
+    @Override
     public void setStatusBarColor(Window window, int color) {
         //取消设置透明状态栏,使 ContentView 内容不再覆盖状态栏
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);

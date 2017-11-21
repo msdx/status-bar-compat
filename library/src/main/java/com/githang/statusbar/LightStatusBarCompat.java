@@ -25,6 +25,12 @@ import java.util.Properties;
 class LightStatusBarCompat {
 
     interface ILightStatusBar {
+        /**
+         * Set whether ths status bar is light
+         *
+         * @param window         The window to set
+         * @param lightStatusBar True if the status bar color is light
+         */
         void setLightStatusBar(Window window, boolean lightStatusBar);
     }
 
@@ -34,7 +40,7 @@ class LightStatusBarCompat {
         if (MIUILightStatusBarImpl.isMe()) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 IMPL = new MLightStatusBarImpl() {
-                    private ILightStatusBar DELEGATE = new MIUILightStatusBarImpl();
+                    private final ILightStatusBar DELEGATE = new MIUILightStatusBarImpl();
 
                     @Override
                     public void setLightStatusBar(Window window, boolean lightStatusBar) {
@@ -108,6 +114,7 @@ class LightStatusBarCompat {
             }
         }
 
+        @Override
         public void setLightStatusBar(Window window, boolean lightStatusBar) {
             Class<? extends Window> clazz = window.getClass();
             try {
@@ -127,6 +134,7 @@ class LightStatusBarCompat {
             return Build.DISPLAY.startsWith("Flyme");
         }
 
+        @Override
         public void setLightStatusBar(Window window, boolean lightStatusBar) {
             WindowManager.LayoutParams params = window.getAttributes();
             try {

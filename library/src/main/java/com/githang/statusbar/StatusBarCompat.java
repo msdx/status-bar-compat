@@ -88,7 +88,7 @@ public class StatusBarCompat {
     /**
      * Set system status bar color.
      *
-     * @param activity
+     * @param activity       The activity to set.
      * @param color          status bar color
      * @param lightStatusBar if the status bar color is light. Only effective in some devices.
      */
@@ -112,6 +112,12 @@ public class StatusBarCompat {
         LightStatusBarCompat.setLightStatusBar(window, lightStatusBar);
     }
 
+    /**
+     * Sets whether or not this view should account for system screen decorations
+     *
+     * @param window           The window to set
+     * @param fitSystemWindows If true, the android content view would be applied the insets
+     */
     public static void setFitsSystemWindows(Window window, boolean fitSystemWindows) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
             internalSetFitsSystemWindows(window, fitSystemWindows);
@@ -138,8 +144,7 @@ public class StatusBarCompat {
     }
 
     /**
-     *
-     * @param window The window of the current activity.
+     * @param window               The window of the current activity.
      * @param actionBarContainerId android.support.v7.appcompat.R.id.action_bar_container
      */
     public static void resetActionBarContainerTopMargin(Window window, @IdRes int actionBarContainerId) {
@@ -166,6 +171,12 @@ public class StatusBarCompat {
         LightStatusBarCompat.setLightStatusBar(window, isLightStatusBar);
     }
 
+    /**
+     * Set the status bar to be translucent
+     *
+     * @param window      The window which status bar would be set
+     * @param translucent True if set the status bar to be translucent
+     */
     public static void setTranslucent(Window window, boolean translucent) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             if (translucent) {
