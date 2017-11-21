@@ -14,17 +14,12 @@ task javadoc(type: Javadoc) {
     source = android.sourceSets.main.java.srcDirs
     classpath += configurations.compile
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    destinationDir rootProject.file('docs')
 }
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
     classifier = 'javadoc'
     from javadoc.destinationDir
-}
-
-task deployJavadoc(type: Copy, dependsOn: javadoc) {
-    delete rootProject.file('docs')
-    from new File(buildDir, 'docs/javadoc')
-    destinationDir rootProject.file('docs')
 }
 
 javadoc {
