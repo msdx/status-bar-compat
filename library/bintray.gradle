@@ -21,6 +21,12 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
     from javadoc.destinationDir
 }
 
+task deployJavadoc(type: Copy, dependsOn: javadoc) {
+    delete rootProject.file('docs')
+    from new File(buildDir, 'docs/javadoc')
+    destinationDir rootProject.file('docs')
+}
+
 javadoc {
     options{
         encoding "UTF-8"

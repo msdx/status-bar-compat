@@ -2,7 +2,7 @@ StatusBarCompat
 ---
 [![Build Status](https://travis-ci.org/msdx/status-bar-compat.svg?branch=master)](https://travis-ci.org/msdx/status-bar-compat)
 [![Download](https://api.bintray.com/packages/msdx/maven/StatusBarCompat/images/download.svg) ](https://bintray.com/msdx/maven/StatusBarCompat/_latestVersion)
-[![Methods](https://img.shields.io/badge/Methods%20and%20size-101%20|%2014%20KB-e91e63.svg)](http://www.methodscount.com/?lib=com.githang%3Astatus-bar-compat%3A0.6)
+<a href="http://www.methodscount.com/?lib=com.githang%3Astatus-bar-compat%3A0.7"><img src="https://img.shields.io/badge/Methods and size-107 | 15 KB-e91e63.svg"/></a>
 
 # 简介
 StatusBarCompat是一个用于设置系统状态栏颜色的兼容库，兼容Android 4.4.2(API 19)以上，使用简单，仅需要一行代码的调用。
@@ -27,7 +27,7 @@ allprojects {
 ## 声明依赖
 在你要使用的module的`build.gradle`文件中声明以下依赖：
 ```gradle
-    compile 'com.githang:status-bar-compat:0.6'
+    compile 'com.githang:status-bar-compat:0.7'
 ```
 
 ## 代码调用
