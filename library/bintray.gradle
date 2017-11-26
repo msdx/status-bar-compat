@@ -14,12 +14,16 @@ task javadoc(type: Javadoc) {
     source = android.sourceSets.main.java.srcDirs
     classpath += configurations.compile
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-    destinationDir rootProject.file('docs')
 }
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
     classifier = 'javadoc'
     from javadoc.destinationDir
+}
+
+task syncJavadoc(type: Sync) {
+    from javadoc.destinationDir
+    into rootProject.file('docs')
 }
 
 javadoc {
