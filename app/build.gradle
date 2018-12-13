@@ -21,6 +21,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:25.4.0'
+    implementation 'com.android.support:design:25.4.0'
     implementation 'com.larswerkman:HoloColorPicker:1.5'
     implementation project(':library')
     testImplementation 'junit:junit:4.12'

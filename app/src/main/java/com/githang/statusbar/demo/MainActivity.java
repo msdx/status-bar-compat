@@ -3,6 +3,7 @@ package com.githang.statusbar.demo;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -41,6 +42,12 @@ public class MainActivity extends AppCompatActivity implements ColorPicker.OnCol
             @Override
             public void onClick(View v) {
                 startActivity(NoActionBarActivity.class);
+            }
+        });
+        findViewById(R.id.snack_bar).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Snackbar.make(v, "Show SnackBar", Snackbar.LENGTH_SHORT).show();
             }
         });
     }
