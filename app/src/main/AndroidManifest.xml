@@ -2,6 +2,8 @@
 <manifest package="com.githang.statusbarcompat.demo"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,6 +17,8 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name="com.githang.statusbar.demo.NoActionBarActivity"
+                  android:theme="@style/Theme.AppCompat.NoActionBar"/>
     </application>
 
 </manifest>

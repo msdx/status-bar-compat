@@ -1,7 +1,10 @@
 package com.githang.statusbar.demo;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ToggleButton;
 
@@ -30,13 +33,24 @@ public class MainActivity extends AppCompatActivity implements ColorPicker.OnCol
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 StatusBarCompat.setTranslucent(getWindow(), isChecked);
                 StatusBarCompat.resetActionBarContainerTopMargin(getWindow());
+                StatusBarCompat.setLightStatusBar(getWindow(), false);
             }
         });
 
+        findViewById(R.id.no_action_bar).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(NoActionBarActivity.class);
+            }
+        });
     }
 
     @Override
     public void onColorChanged(int color) {
         StatusBarCompat.setStatusBarColor(this, color);
+    }
+
+    private void startActivity(Class<? extends Activity> cls) {
+        startActivity(new Intent(this, cls));
     }
 }
